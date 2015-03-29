@@ -1,0 +1,33 @@
+{
+  "name": "garlic",
+  "version": "0.0.0",
+  "description": "a more magical blt",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jarofghosts/garlic.git"
+  },
+  "keywords": [
+    "storm",
+    "bolt",
+    "magic",
+    "stream"
+  ],
+  "author": "jesse keane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/garlic/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/garlic",
+  "dependencies": {
+    "blt": "0.0.1",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "proxyquire": "^1.4.0",
+    "tape": "^3.5.0"
+  }
+}
