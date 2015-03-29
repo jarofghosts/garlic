@@ -1,5 +1,8 @@
 # garlic
 
+[![Build Status](http://img.shields.io/travis/jarofghosts/garlic.svg?style=flat)](https://travis-ci.org/jarofghosts/garlic)
+[![npm install](http://img.shields.io/npm/dm/garlic.svg?style=flat)](https://www.npmjs.org/package/garlic)
+
 Adds a little bit of magic to your [blt](http://npm.im/blt)
 
 ## example
