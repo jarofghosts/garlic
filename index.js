@@ -16,25 +16,44 @@ function garlic(createStream) {
     function factory(tuple, _, next) {
       var stream = createStream(tuple)
 
-      stream.on('data', function(data) {
-        garlicStream.push([data, tuple])
-      })
-
-      stream.on('error', function() {
-        garlicStream.emit('fail', tuple)
-      })
-
-      stream.on('end', function() {
-        garlicStream.emit('ack', tuple)
-      })
-
-      stream.on('log', function(message) {
-        garlicStream.emit('log', message)
-      })
+      stream.on('data', onData)
+      stream.on('error', onError)
+      stream.on('end', onEnd)
+      stream.on('log', onLog)
 
       stream.write(tuple.tuple[0])
+      stream.end()
 
       next()
+
+      function cleanup() {
+        stream.removeListener('data', onData)
+        stream.removeListener('error', onError)
+        stream.removeListener('end', onEnd)
+        stream.removeListener('log', onLog)
+      }
+
+      function onData(data) {
+        garlicStream.push([data, tuple])
+      }
+
+      function onError() {
+        garlicStream.emit('fail', tuple)
+        cleanup()
+
+        if(stream.destroy) {
+          stream.destroy()
+        }
+      }
+
+      function onEnd() {
+        garlicStream.emit('ack', tuple)
+        cleanup()
+      }
+
+      function onLog(message) {
+        garlicStream.emit('log', message)
+      }
     }
   }
 }
