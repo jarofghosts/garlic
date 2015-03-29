@@ -1,6 +1,6 @@
 {
   "name": "garlic",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a more magical blt",
   "main": "index.js",
   "scripts": {
