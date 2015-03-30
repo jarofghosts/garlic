@@ -21,7 +21,7 @@ function garlic(createStream) {
       stream.on('end', onEnd)
       stream.on('log', onLog)
 
-      stream.write(tuple.tuple[0])
+      stream.write(tuple.tuple[tuple.tuple.length - 1])
       stream.end()
 
       next()
